@@ -1,9 +1,9 @@
 *2000 hours to Automate*
 
 **Project members**
-Justin Nordeman _(CS)_ nordemja@mail.uc.edu
-Jackson Trexler _(CS)_ trexlejt@mail.uc.edu
-Joshua Zack     _(CS)_ zackjm@mail.uc.edu
+- Justin Nordeman _(CS)_ nordemja@mail.uc.edu
+- Jackson Trexler _(CS)_ trexlejt@mail.uc.edu
+- Joshua Zack     _(CS)_ zackjm@mail.uc.edu
 
 **Faculty Advisor**
 TBA
