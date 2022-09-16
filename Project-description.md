@@ -27,6 +27,5 @@ TBA
 **Side notes**
 - Use learned information from classes to improve/speed up processing
 
-
-**TODO**
-[] FIND A FACULTY
+**Project Advisor**
+Dr. Fred Annexstein - annexsfs@ucmail.uc.edu
