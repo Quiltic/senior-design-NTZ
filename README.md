@@ -18,4 +18,4 @@
    - [Jackson Trexler](Professional%20Biographys/TrexlerProfessionalBiography.md)
 10. Budget
       - To date, there has been no expenses
-11. [Appendix](Appendix.md)
+11. [Appendix](appendix.md)
