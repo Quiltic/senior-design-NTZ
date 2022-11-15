@@ -7,7 +7,7 @@
 4. [Task List](Tasklist.md)
 5. [Milestones](MilestonesTimelineandEffortMatrix.md#table-0-milestones)
 6. [ABET Concerns Essay](lol)
-7. [PPT Slideshow] (lol)
+7. [PPT Slideshow] (writing_assignments/assignment3)
 8. [Self-Assessment Essays](writing_assignments/assignment3)
    - [Justin Nordeman](writing_assignments/assignment3/BenElfnerIndividualCapstoneAssessment.md)
    - [Joshua Zack](writing_assignments/assignment3/Individual%20Capstone%20Assessment.docx)
