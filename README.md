@@ -7,7 +7,7 @@
 4. [Task List](Tasklist.md)
 5. [Milestones](milestones.md)
 6. [ABET Concerns Essay](Assignment%20%237%20Essay.docx)
-7. [PPT Slideshow] (writing_assignments/assignment3)
+7. [PPT Slideshow] (https://github.com/Quiltic/senior-design-NTZ)
 8. [Self-Assessment Essays](individual_capstone_assesment/)
    - [Justin Nordeman]individual_capstone_assesment/SeniorDesign_Assignment3_Essay.docx)
    - [Joshua Zack](individual_capstone_assesment/Joshua%20Zack%20Individual%20capstone%20assessment.docx)
