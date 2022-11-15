@@ -9,12 +9,13 @@
 6. [ABET Concerns Essay](lol)
 7. [PPT Slideshow] (lol)
 8. [Self-Assessment Essays](writing_assignments/assignment3)
-   - [Ben Elfner](writing_assignments/assignment3/BenElfnerIndividualCapstoneAssessment.md)
-   - [Jack Cordonnier](writing_assignments/assignment3/Individual%20Capstone%20Assessment.docx)
-   - 
+   - [Justin Nordeman](writing_assignments/assignment3/BenElfnerIndividualCapstoneAssessment.md)
+   - [Joshua Zack](writing_assignments/assignment3/Individual%20Capstone%20Assessment.docx)
+   - [Jackson Trexler](writing_assignments/assignment3/Individual%20Capstone%20Assessment.docx)
 9. [Professional Biographies](writing_assignments/assignment2)
-   - [Ben Elfner](writing_assignments/assignment2/Professional%20Biography%20BE.md)
-   - [Jack Cordonnier](writing_assignments/assignment2/Professional%20Biography%20JNC.md)
+   - [Justin Nordeman](writing_assignments/assignment3/BenElfnerIndividualCapstoneAssessment.md)
+   - [Joshua Zack](writing_assignments/assignment3/Individual%20Capstone%20Assessment.docx)
+   - [Jackson Trexler](writing_assignments/assignment3/Individual%20Capstone%20Assessment.docx)
 10. Budget
       - To date, there has been no expenses
 11. [Appendix](Appendix.md)
