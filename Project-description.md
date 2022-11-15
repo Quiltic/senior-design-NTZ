@@ -6,7 +6,7 @@
 - Joshua Zack     _(CS)_ zackjm@mail.uc.edu
 
 **Faculty Advisor**
-TBA
+- Dr. Fred Annexstein (annexsfs@ucmail.uc.edu)
 
 **Project Description**
 - A machine learned AI which is capable of taking in a vidio lecture and giving back a notes document for its topic
