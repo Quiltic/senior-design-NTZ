@@ -13,7 +13,7 @@
    - [Joshua Zack](individual_capstone_assesment/Joshua%20Zack%20Individual%20capstone%20assessment.docx)
    - [Jackson Trexler](individual_capstone_assesment/JacksonTrexlerIndividualCapstoneAssessment.docx)
 9. [Professional Biographies](Professional%20Biographys)
-   - [Justin Nordeman](Professional%20Biographys/nordeman_professional_biography.md)
+   - [Justin Nordeman](Professional%20Biographys/nordeman_professional_biography.md) 
    - [Joshua Zack](Professional%20Biographys/Professional%20Biography%20Josh%20Zack.md)
    - [Jackson Trexler](Professional%20Biographys/TrexlerProfessionalBiography.md)
 10. Budget
