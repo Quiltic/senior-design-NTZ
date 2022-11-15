@@ -2,7 +2,7 @@
 
 ## CS5001 Final  Report
 1. [Team names](Project-description.md) and [Abstract](abstract.md)
-2. [Project Description](Project-Description.md)
+2. [Project Description](Project-description.md)
 3. [User Stories](User_Stories.md) and [Design Diagrams](Design_Diagrams/DesignDiagrams.md)
 4. [Task List](Tasklist.md)
 5. [Milestones](MilestonesTimelineandEffortMatrix.md#table-0-milestones)
