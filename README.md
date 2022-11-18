@@ -5,7 +5,7 @@
 2. [Project Description](Project-description.md)
 3. [User Stories](User_Stories.md) and [Design Diagrams](Design_Diagrams/Design_Diagrams.md)
 4. [Task List](Tasklist.md)
-5. [Milestones](milestones.md)
+5. [Milestones](Milestones.md)
 6. [ABET Concerns Essay](Assignment%20%237%20Essay.docx)
 7. [PPT Slideshow](https://mailuc-my.sharepoint.com/:p:/g/personal/trexlejt_mail_uc_edu/EZQmkkjh0sJIpy3eF7fyiHYB_B8kezL40YRlPBNPUZt6mw?rtime=uz_4oqDJ2kg)
 8. [Self-Assessment Essays](individual_capstone_assesment/)
