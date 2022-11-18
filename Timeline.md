@@ -2,7 +2,7 @@
 
 
 | Milestones                            | Estimated Start Day | Estimated Length (Days) | Estimated Completed Day |
-|--:-:----------------------------------|--:-:----------------|--:-:--------------------|--:-:--------------------|
+|---------------------------------------|---------------------|-------------------------|-------------------------|
 | Training Data for Video Transcription | 1                   | 25                      | 25                      |
 | Training Data for Note Taking         | 1                   | 25                      | 25                      |
 | POC AI for Speech to Text             | 20                  | 3                       | 24                      |
