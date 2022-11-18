@@ -9,21 +9,19 @@
 **Faculty Advisor**
 - Dr. Fred Annexstein (annexsfs@ucmail.uc.edu)
 
+**Project Goal** 
+- A machine learned AI which is capable of taking in a video  lecture and giving back a notes document for its topic
+
 **Project Description**
-- A machine learned AI which is capable of taking in a vidio lecture and giving back a notes document for its topic
-- For basic data use Khan Acadimy and notecards found online
-- Python based aplication
--   Pytorch?
+- Input Data: Khan Academy and other open source educational videos publically available online
+- Language(s) used: Python
+- Libraries: PyTorch for audio and text processing. Selenium for automation
 
 
 **Steps**
-- Gather vidio's/audio with transcriptions
-- Train a basic bot with data to learn basic speach to text
-- Test
-- Take/find notes on given videos
-- Retrain with new notes
-- test
-- Profit
-
-**Side notes**
-- Use learned information from classes to improve/speed up processing
+- Gather video and audio data with transcriptions
+- Train basic bot with gathered data to learn basic speech to text
+- Test and refine as needed
+- Create Notes on video data to use for text to notes feature
+- Retrain with notes
+- Test and refine as needed
