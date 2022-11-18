@@ -1,4 +1,5 @@
-*2000 hours to Automate*
+**Team Name** 
+- 2000 hours to Automate
 
 **Project members**
 - Justin Nordeman _(CS)_ nordemja@mail.uc.edu
