@@ -7,7 +7,7 @@
 4. [Task List](Tasklist.md)
 5. [Milestones](milestones.md)
 6. [ABET Concerns Essay](Assignment%20%237%20Essay.docx)
-7. [PPT Slideshow] (https://mailuc-my.sharepoint.com/:p:/g/personal/trexlejt_mail_uc_edu/EZQmkkjh0sJIpy3eF7fyiHYB_B8kezL40YRlPBNPUZt6mw?rtime=hsE3TVfH2kg)
+7. [PPT Slideshow] (milestones.md)
 8. [Self-Assessment Essays](individual_capstone_assesment/)
    - [Justin Nordeman](individual_capstone_assesment/SeniorDesign_Assignment3_Essay.docx)
    - [Joshua Zack](individual_capstone_assesment/Joshua%20Zack%20Individual%20capstone%20assessment.docx)
