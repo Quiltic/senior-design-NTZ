@@ -4,7 +4,6 @@
 
 [https://github.com/Quiltic/senior-design-NTZ](https://github.com/Quiltic/senior-design-NTZ)
 
-[**Slideshow**](https://mailuc-my.sharepoint.com/:p:/g/personal/trexlejt_mail_uc_edu/EZQmkkjh0sJIpy3eF7fyiHYB_B8kezL40YRlPBNPUZt6mw?rtime=hsE3TVfH2kg)
 
 ****
 
