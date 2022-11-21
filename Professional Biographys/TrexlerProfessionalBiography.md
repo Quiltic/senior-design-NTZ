@@ -19,6 +19,8 @@
 - Reductive problem solving skills as well as communication with those outside the company.
 
 ## Past Projects
-- 
+- Gambeson: Gamemaker Tactical RPG framework
+- COVID Death Web Widget
+
 ## **Project Sought**
 > Looking to develop an application written in Python that can transcribe lecture notes via machine learning.
