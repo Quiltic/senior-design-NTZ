@@ -43,6 +43,18 @@ def gpt3_completion(prompt, engine='text-davinci-002', temp=0.7, top_p=1.0, toke
             sleep(1)
 
 
+def clean_summary(summary):
+    #PUT EACH BULLET ON NEW LINE
+
+    location = [m.start() for m in re.finditer(' -', summary)]
+
+    for val, each in enumerate(location):
+        if summary[each+2].isupper():
+
+            summary = summary[:each] + '\n' + summary[each + 1:]
+
+    return summary
+
 if __name__ == '__main__':
     alltext = open_file('input.txt')
 
@@ -51,7 +63,8 @@ if __name__ == '__main__':
     for chunk in chunks:
         prompt = open_file('prompt.txt').replace("<<BULLET NOTES>>", chunk)
         summary = gpt3_completion(prompt)
+        summary = clean_summary(summary)
         print(summary)
         result.append(summary)
     
-    save_file('\n\n'.join(result), 'output.txt')
+    save_file('\n'.join(result), 'output.txt')
