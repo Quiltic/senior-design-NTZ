@@ -3,14 +3,17 @@
 - What is P.A.N.T.S
 ## Program Use ##
 - Overview
-## Transcription ##
+# Transcription #
 - Speech to Text 
 - Text to Summarization
 - Pausing
-## Summarization ##
+# Summarization #
 - What To Expect
 - Creating A Summary From a Text File
 - Summarizing Recently Transcribed Text
-## File I/O ##
+# File I/O #
 - File Locations and Names
 - Importing and Exporting Text Files
+## Support ##
+- FAQ
+- Advice
