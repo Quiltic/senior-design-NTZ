@@ -128,6 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-api_key.txt
-input.txt
-output.txt
+summarization_poc/api_key.txt
+summarization_poc/input.txt
+summarization_poc/output.txt
