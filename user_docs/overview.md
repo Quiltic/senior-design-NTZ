@@ -9,3 +9,8 @@ if you just want to transcribe audio only, add flag -nosummary:
 You can also directly summarize plaintext with flag -notranscribe: 
 'pants -notranscribe someTextToSummarize.txt'
 
+## GUI ##
+More details to come,
+Click "Import" button, select file to use.
+
+Check "Transcription Only" to only transcribe text.
