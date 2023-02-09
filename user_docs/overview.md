@@ -1,6 +1,10 @@
 ### How to run P.A.N.T.S. ###
 P.A.N.T.S. may be used either from our provided Graphical User Interface (GUI) or via command-line.
 ## Command Line ##
-The a standard PANTS session may be initiated by passing launch argument "start".
-'PANTS start'
-PANTS will immediately start listening
+To transcribe and summarize the audio found in a video, simply pass the mp4 video file to pants
+'pants someVideoToSummarize.mp4'
+if you just want to transcribe audio only, add flag -nosummary
+'pants -nosummary someVideoToSummarize.mp4'
+
+You can also directly summarize plaintext with flag -notranscribe
+'pants -notranscribe someTextToSummarize.txt'
