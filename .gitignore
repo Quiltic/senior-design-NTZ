@@ -131,3 +131,7 @@ dmypy.json
 summarization_poc/api_key.txt
 summarization_poc/input.txt
 summarization_poc/output.txt
+
+src/api_key.txt
+src/input.txt
+src/output.txt
