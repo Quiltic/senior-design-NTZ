@@ -55,6 +55,9 @@ def clean_summary(summary):
 
     return summary
 
+def test_func():
+    print('got to summarization section')
+
 if __name__ == '__main__':
     alltext = open_file('input.txt')
 
