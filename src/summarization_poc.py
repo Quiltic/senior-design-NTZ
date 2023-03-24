@@ -58,7 +58,6 @@ def clean_summary(summary):
 def test_func():
     print('got to summarization section')
 
-if __name__ == '__main__':
     alltext = open_file('input.txt')
 
     chunks = textwrap.wrap(alltext, 4000)
