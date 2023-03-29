@@ -1,9 +1,9 @@
 import os
-from time import time, sleep
 import textwrap
 import openai
 import re
 
+from time import time, sleep
 from tkinter import *
 from tkinter import filedialog
 from tkinter.ttk import *
@@ -59,19 +59,31 @@ def clean_summary(summary):
 
     return summary
 
-def generate_summary(btn):
+def generate_summary(btn, master):
     print('got to summarization section')
 
-    alltext = open_file('input.txt')
+    btn.configure(state=NORMAL)
+    btn.delete("1.0", END)
+    btn.insert(END, "PREPARING NOTES........")
+    btn.configure(state=DISABLED)
+    master.update()
+
+    alltext = open_file('input_backup.txt')
 
     chunks = textwrap.wrap(alltext, 4000)
     result = list()
+    btn.configure(state=NORMAL)
+    btn.delete("1.0", END)
+    btn.configure(state=DISABLED)
     for chunk in chunks:
         prompt = open_file('prompt.txt').replace("<<BULLET NOTES>>", chunk)
         summary = gpt3_completion(prompt)
         summary = clean_summary(summary)
 
-
+        btn.configure(state=NORMAL)
+        btn.insert(END, summary)
+        master.update()
+        btn.configure(state=DISABLED)
 
 
         print(summary)

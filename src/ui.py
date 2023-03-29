@@ -28,15 +28,12 @@ transcribed_text.place(x=25, y=200)
 
 notes_text = Text(master, height=25, width=50, wrap=WORD)
 notes_text.place(x=450, y=200)
-
-notes_text.insert(END, "OPEN A FILE TO BEGIN!")
-notes_text.configure(state=DISABLED)
  
 # a button widget which will open a new window on button click
-btn_run_speech_to_text = Button(master, text ="Run Speech To Text", command=lambda: speech_to_text.transcribe_file(transcribed_text))
+btn_run_speech_to_text = Button(master, text ="Run Speech To Text", command=lambda: speech_to_text.transcribe_file(transcribed_text, master))
 btn_run_speech_to_text.place(x=25, y=100)
 
-btn = Button(master, text ="Run Text to Notes", command=lambda: summarization_poc.generate_summary(notes_text))
+btn = Button(master, text ="Run Text to Notes", command=lambda: summarization_poc.generate_summary(notes_text, master))
 btn.place(x=200, y=100)
 
 
