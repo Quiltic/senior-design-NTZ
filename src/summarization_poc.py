@@ -4,6 +4,10 @@ import textwrap
 import openai
 import re
 
+from tkinter import *
+from tkinter import filedialog
+from tkinter.ttk import *
+
 def open_file(path):
     with open(path, 'r', encoding='utf-8') as input_file:
         return input_file.read()
@@ -55,7 +59,7 @@ def clean_summary(summary):
 
     return summary
 
-def test_func():
+def generate_summary(btn):
     print('got to summarization section')
 
     alltext = open_file('input.txt')
@@ -66,7 +70,13 @@ def test_func():
         prompt = open_file('prompt.txt').replace("<<BULLET NOTES>>", chunk)
         summary = gpt3_completion(prompt)
         summary = clean_summary(summary)
+
+
+
+
         print(summary)
+
+
         result.append(summary)
     
     save_file('\n'.join(result), 'output.txt')
