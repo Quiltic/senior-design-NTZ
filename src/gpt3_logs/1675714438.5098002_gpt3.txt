@@ -1,0 +1,13 @@
+PROMPT:
+
+Give me detailed bulleted notes of the following:
+
+first glance it was beautiful. The water was crystal clear and you could easily see fish swimming. This one also had two diving platforms that you could jump off of.         Overall it was definitely my most memorable day of the trip.
+
+BULLET NOTES:
+
+==========
+
+RESPONSE:
+
+- first glance of the water was beautiful and clear - easily saw fish swimming - two diving platforms - most memorable day of the trip

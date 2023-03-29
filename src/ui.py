@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import filedialog
 import summarization_poc
+import speech_to_text
 from tkinter.ttk import *
 
 
@@ -25,7 +26,7 @@ label = Label(master, text ="Welcome to P.A.N.T.S", font=("Times New Roman", 25)
 label.pack(pady = 10)
  
 # a button widget which will open a new window on button click
-btn = Button(master, text ="Run Speech To Text", command = None)#openNewWindow7)
+btn = Button(master, text ="Run Speech To Text", command = speech_to_text.test)#openNewWindow7)
 btn.place(x=25, y=100)
 
 btn = Button(master, text ="Run Text to Notes", command = summarization_poc.test_func)

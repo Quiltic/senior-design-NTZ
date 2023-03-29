@@ -1,53 +1,34 @@
+import torch
+import zipfile
+import torchaudio
+from glob import glob
 
-# Python program to translate
-# speech to text and text to speech
- 
- 
-import speech_recognition as sr
-import pyttsx3
- 
-# Initialize the recognizer
-r = sr.Recognizer()
- 
-# Function to convert text to
-# speech
-def SpeakText(command):
-     
-    # Initialize the engine
-    engine = pyttsx3.init()
-    engine.say(command)
-    engine.runAndWait()
-     
-     
-# Loop infinitely for user to
-# speak
- 
-while(1):   
-     
-    # Exception handling to handle
-    # exceptions at the runtime
-    try:
-         
-        # use the microphone as source for input.
-        with sr.Microphone() as source2:
-             
-            # wait for a second to let the recognizer
-            # adjust the energy threshold based on
-            # the surrounding noise level
-            r.adjust_for_ambient_noise(source2, duration=0.2)
-             
-            #listens for the user's input
-            audio2 = r.listen(source2)
-             
-            # Using google to recognize audio
-            MyText = r.recognize_google(audio2)
-            MyText = MyText.lower()
- 
-            print("Did you say ",MyText)
-            SpeakText(MyText)
-             
-    except sr.RequestError as e:
-        print("Could not request results; {0}".format(e))
-         
-    except sr.UnknownValueError:
-        print("unknown error occurred")
+device = torch.device('cpu')  # gpu also works, but our models are fast enough for CPU
+
+model, decoder, utils = torch.hub.load(repo_or_dir='snakers4/silero-models',
+                                       model='silero_stt',
+                                       language='en', # also available 'de', 'es'
+                                       device=device)
+(read_batch, split_into_batches,
+ read_audio, prepare_model_input) = utils  # see function signature for details
+
+# download a single file, any format compatible with TorchAudio (soundfile backend)
+torch.hub.download_url_to_file('https://opus-codec.org/static/examples/samples/speech_orig.wav',
+                               dst ='speech_orig.wav', progress=True)
+
+def test():
+    test_files = glob('speech_orig.wav')
+    batches = split_into_batches(test_files, batch_size=10)
+    input = prepare_model_input(read_batch(batches[0]),
+                                device=device)
+
+    output = model(input)
+    for example in output:
+        teststr = decoder(example.cpu())
+
+        file1 = open("input_backup.txt", 'w')
+        file1.write(teststr)
+        file1.close() 
+
+        print(type(teststr))
+        print(decoder(example.cpu()))
