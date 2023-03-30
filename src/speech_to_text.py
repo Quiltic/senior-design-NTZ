@@ -26,7 +26,7 @@ def transcribe_file(btn, master):
     btn.insert(END, "TRANSCRIBING FILE........")
     btn.configure(state=DISABLED)
     master.update()
-    test_files = glob('speech_orig.wav')
+    test_files = glob('chemistry.wav')
     batches = split_into_batches(test_files, batch_size=10)
     input = prepare_model_input(read_batch(batches[0]),
                                 device=device)
