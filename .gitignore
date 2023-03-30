@@ -135,3 +135,5 @@ summarization_poc/output.txt
 src/api_key.txt
 src/input.txt
 src/output.txt
+src/gpt3_logs
+src/chemistry_LONG.wav
