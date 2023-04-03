@@ -60,7 +60,6 @@ def clean_summary(summary):
     return summary
 
 def generate_summary(btn, master):
-    print('got to summarization section')
 
     btn.configure(state=NORMAL)
     btn.delete("1.0", END)
@@ -92,3 +91,23 @@ def generate_summary(btn, master):
         result.append(summary)
     
     save_file('\n'.join(result), 'output.txt')
+
+
+def load_text_to_notes(btn, master):
+
+    btn.configure(state=NORMAL)
+    btn.delete("1.0", END)
+    btn.insert(END, "PREPARING NOTES........")
+    btn.configure(state=DISABLED)
+    master.update()
+
+
+    f = open("output.txt", 'r')
+    text = f.read()
+    f.close()
+
+    btn.configure(state=NORMAL)
+    btn.delete("1.0", END)
+    btn.insert(END, text)
+    btn.configure(state=DISABLED)
+    master.update()

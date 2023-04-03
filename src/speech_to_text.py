@@ -20,12 +20,13 @@ model, decoder, utils = torch.hub.load(repo_or_dir='snakers4/silero-models',
 # torch.hub.download_url_to_file('https://opus-codec.org/static/examples/samples/speech_orig.wav',
 #                                dst ='speech_orig.wav', progress=True)
 
-def transcribe_file(btn, master):
+def transcribe_file(btn, master, opened_file):
     btn.configure(state=NORMAL)
     btn.delete("1.0", END)
     btn.insert(END, "TRANSCRIBING FILE........")
     btn.configure(state=DISABLED)
     master.update()
+    print(opened_file)
     test_files = glob('chemistry.wav')
     batches = split_into_batches(test_files, batch_size=10)
     input = prepare_model_input(read_batch(batches[0]),

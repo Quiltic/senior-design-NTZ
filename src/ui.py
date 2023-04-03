@@ -1,15 +1,35 @@
 
 from tkinter import *
 from tkinter import filedialog
+from tkinter.ttk import *
 import summarization_poc
 import speech_to_text
-from tkinter.ttk import *
+import run_all
+import os
 
+
+opened_file = ''
 
 def browse_files():
-    filename = filedialog.askopenfile( title = "Select a File", filetypes = [("All files", ".mp3 .mp4 .wav")])    
-    label_file_explorer.configure(text="File Opened: "+ str(filename))
+    filename = filedialog.askopenfile( title = "Select a File", filetypes = [("All files", ".mp3 .mp4 .wav")])   
+    opened_file = os.path.basename(str(filename))
+    opened_file = opened_file.split("'")[0]
+    label_file_explorer.configure(text="File Opened: "+ opened_file)
 
+def clear_text_widgets(btn1, btn2, master):
+
+    print("clear text widget")
+    btn1.configure(state=NORMAL)
+    btn1.delete("1.0", END)
+    btn1.configure(state=DISABLED)
+
+    master.update()
+
+    btn2.configure(state=NORMAL)
+    btn2.delete("1.0", END)
+    btn2.configure(state=DISABLED)
+
+    master.update()
 
 # creates a Tk() object
 master = Tk()
@@ -30,20 +50,20 @@ notes_text = Text(master, height=25, width=50, wrap=WORD)
 notes_text.place(x=450, y=200)
  
 # a button widget which will open a new window on button click
-btn_run_speech_to_text = Button(master, text ="Run Speech To Text", command=lambda: speech_to_text.transcribe_file(transcribed_text, master))
+btn_run_speech_to_text = Button(master, text ="Run Speech To Text", command=lambda: speech_to_text.transcribe_file(transcribed_text, master, opened_file))
 btn_run_speech_to_text.place(x=25, y=100)
 
 btn = Button(master, text ="Run Text to Notes", command=lambda: summarization_poc.generate_summary(notes_text, master))
 btn.place(x=200, y=100)
 
 
-btn_run_all = Button(master, text ="Run All", command = None)
+btn_run_all = Button(master, text ="Run All", command=lambda: run_all.run_all(transcribed_text, notes_text, master, opened_file))
 btn_run_all.place(x=350, y=100)
 
-btn_save = Button(master, text ="Save", command = None)
+btn_save = Button(master, text ="Clear", command = lambda: clear_text_widgets(transcribed_text, notes_text, master))
 btn_save.place(x=500, y=100)
 
-btn_load = Button(master, text ="Load", command = None)
+btn_load = Button(master, text ="Load", command=lambda: summarization_poc.load_text_to_notes(notes_text, master))
 btn_load.place(x=650, y=100)
 
 btn_browse = Button(master, text = "Browse Files", command = browse_files)

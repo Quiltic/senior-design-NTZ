@@ -1,4 +1,1 @@
--Chemistry is the study of matter, its composition, properties, and structure, and how it changes and interacts with energy.
--Chemistry is present everywhere in the natural world, and anything related to matter involves chemistry.
--The main branches of chemistry are: organic chemistry, inorganic chemistry, analytical chemistry, and physical chemistry.
--We will learn more about these topics as we go on.
+- Chemistry is the study of matter, including its composition, properties, and structure. - It also covers how changes and how it interacts with energy. - The sky's color is related to the chemical make-up of substances and the type of light they reflect. - Insects can walk across the surface of water because of the water's unique properties, like high surface tension. - There are five main branches of chemistry: inorganic chemistry, organic chemistry, analytical chemistry, physical chemistry, and biochemistry.
