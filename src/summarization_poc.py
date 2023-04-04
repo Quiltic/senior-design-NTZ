@@ -111,3 +111,26 @@ def load_text_to_notes(btn, master):
     btn.insert(END, text)
     btn.configure(state=DISABLED)
     master.update()
+
+
+def generate_summary_training_data(infile, outfile):
+
+
+    alltext = open_file(infile)
+
+    chunks = str(textwrap.wrap(alltext, 4000))
+    result = list()
+
+    for chunk in chunks:
+        prompt = open_file('prompt.txt').replace("<<BULLET NOTES>>", chunk)
+        summary = gpt3_completion(prompt)
+        summary = clean_summary(summary)
+
+
+
+        #print(summary)
+
+
+        result.append(summary)
+    
+    save_file('\n'.join(result), outfile)
