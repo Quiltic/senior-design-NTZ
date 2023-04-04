@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import os
 import numpy as np
+from torch.utils.data.sampler import SubsetRandomSampler
 
 PATH = "C:/Users/jtrex/Documents/SrDesignProj"
 
@@ -216,16 +217,21 @@ class NotesDataset(torch.utils.data.Dataset):
     transcribe = os.path.join(source_folder,"transcribe")
     notes = os.path.join(source_folder,"notes")
     
-    transcribeFiles = [f for f in os.listdir(transcribe) if os.path.isfile(os.path.join(transcribe, f))]
-    notesFiles = [f for f in os.listdir(transcribe) if os.path.isfile(os.path.join(notes, f))]
+    transcribeFiles = [os.path.join(transcribe, f) for f in os.listdir(transcribe) if os.path.isfile(os.path.join(transcribe, f))]
+    notesFiles = [os.path.join(notes, f) for f in os.listdir(transcribe) if os.path.isfile(os.path.join(notes, f))]
 
     for fil in transcribeFiles:
         with open(fil, 'r') as f:
+            #print("newb:")
+            #print(f.name)
             self.x_data.append(tokenizer(f.read()))
     
     for fil in notesFiles:
         with open(fil, 'r') as f:
             self.y_data.append(tokenizer(f.read()))
+    
+    self.x_data = torch.from_numpy(np.asarray(self.x_data))
+    self.y_data = torch.from_numpy(np.asarray(self.y_data))
     
 
   def __len__(self):
@@ -254,12 +260,12 @@ class LSTMModel(nn.Module):
         self.dropout = nn.Dropout(dropout)
         self.linear = nn.Linear(hidden_size, output_size)
         self.softmax = nn.LogSoftmax(dim=1)   
-    def forward(self, input, hidden):
-        output, hidden = self.lstm(input, hidden)
+    def forward(self, input):
+        output = self.lstm(input)
         output = self.dropout(output)
         output = self.linear(output.view(-1, self.hidden_size))
         output = self.softmax(output)
-        return output, hidden
+        return output
     def init_hidden(self, batch_size):
         return (torch.zeros(1, batch_size, self.hidden_size),
                 torch.zeros(1, batch_size, self.hidden_size))
@@ -293,22 +299,22 @@ def train(model, device, source_file, target_file, input_size, hidden_size, outp
         target = target_tensor[epoch].unsqueeze(1)
 """
     
-def train2(model, device, train_loader, criterion, optimizer, scheduler, epoch):
+def train(model, device, train_loader, criterion, optimizer, scheduler, epoch):
     model.train()
     data_len = len(train_loader.dataset)
     for batch_idx, _data in enumerate(train_loader):
-        transcription, labels, input_lengths, label_lengths = _data 
+        transcription, labels = _data 
         transcription, labels = transcription.to(device), labels.to(device)
 
         optimizer.zero_grad()
-
+        
+        print(transcription)
         output = model(transcription)  # (batch, time, n_class)
         #output = F.log_softmax(output, dim=2)
         #output = output.transpose(0, 1) # (time, batch, n_class)
 
-        loss = criterion(output, labels, input_lengths, label_lengths)
+        loss = criterion(output, labels, data_len, data_len)
         loss.backward()
-
 
         optimizer.step()
         scheduler.step()
@@ -318,3 +324,69 @@ def train2(model, device, train_loader, criterion, optimizer, scheduler, epoch):
                 100. * batch_idx / len(train_loader), loss.item()))
     torch.save(model.state_dict(), f'{PATH}/Senior_Model_{1}.pt')
 
+def main():
+    #(self, input_size, hidden_size, output_size, dropout=0.2)
+    hparams = {
+        "n_input_size": 3010,
+        "n_hidden_size": 1900,
+        "n_output_size": 1024,
+        "stride": 2,
+        "dropout": 0.2,
+        "learning_rate": 5e-4,
+        "batch_size": 20,
+        "epochs": 1
+    }
+    train_url="train-clean-100"
+    test_url="test-clean"
+
+    use_cuda = torch.cuda.is_available()
+    torch.manual_seed(7)
+    #device = torch.device("cuda" if use_cuda else "cpu")
+
+
+    CUDA_DEVICE_NUM = 0
+    # DEVICE = torch.device('cpu')
+
+    device = torch.device(f'cuda:{CUDA_DEVICE_NUM}' if torch.cuda.is_available() else 'cpu')
+    print('Device:', device)
+    if not os.path.isdir(f"{PATH}/data"):
+        os.makedirs(f"{PATH}/data")
+
+
+
+    kwargs = {'num_workers': 1, 'pin_memory': True} if use_cuda else {}
+    
+    
+    
+    dataset = NotesDataset(f"{PATH}/data")
+    dataset.__len__()
+    # Creating PT data samplers and loaders:
+    train_sampler = SubsetRandomSampler([0 , int(dataset.__len__() * .8)])
+    valid_sampler = SubsetRandomSampler([int(dataset.__len__() * .8) , int(dataset.__len__())])
+    
+    train_loader = torch.utils.data.DataLoader(dataset, batch_size=hparams['batch_size'], 
+                                               sampler=train_sampler)
+    test_loader = torch.utils.data.DataLoader(dataset, batch_size=hparams['batch_size'],
+                                                    sampler=valid_sampler)
+    #(input_size, hidden_size, output_size, dropout=0.2)
+    model = LSTMModel(
+        hparams['n_input_size'],hparams['n_hidden_size'],hparams["n_output_size"],
+        hparams['dropout']
+        ).to(device)
+
+    # print(model)
+    print('Num Model Parameters', sum([param.nelement() for param in model.parameters()]))
+
+    optimizer = optim.AdamW(model.parameters(), hparams['learning_rate'])
+    criterion = nn.CTCLoss(blank=28).to(device)
+    scheduler = optim.lr_scheduler.OneCycleLR(optimizer, max_lr=hparams['learning_rate'], 
+                                            steps_per_epoch=int(len(train_loader)),
+                                            epochs=hparams['epochs'],
+                                            anneal_strategy='linear')
+
+    #iter_meter = IterMeter()
+    for epoch in range(1, hparams['epochs'] + 1):
+        train(model, device, train_loader, criterion, optimizer, scheduler, epoch)
+        #test(model, device, test_loader, criterion, epoch, "")
+        
+main()
