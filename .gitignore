@@ -138,4 +138,6 @@ src/output.txt
 src/gpt3_logs
 src/chemistry_LONG.wav
 
+transcription_files_backup/
+
 .vscode

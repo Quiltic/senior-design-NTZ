@@ -1,6 +1,11 @@
--The internet has drastically changed the way that we communicate with one another
--Before the internet, communication was much slower and more difficult
--The internet has allowed us to communicate with people all over the world instantly
--The internet has also allowed us to share information and ideas much more easily
--The internet has made communication much more efficient and effective.
-- King Henry IV dies, and his son, Henry V, becomes king - Henry V is a young and popular king, and he quickly gains the people's support - Henry V invades France, and the English army is victorious at the Battle of Agincourt - The English continue to push into France, and they win several more key battles - The French king surrenders, and Henry V is crowned the king of England and France
+-The history of the internet begins with the development of electronic computers in the 1950s.
+-The first computers were used for military purposes, but soon they were used for commercial and scientific applications as well.
+-In the 1960s, computer scientists developed the concept of packet-switching, which allowed for more efficient use of computer networks.
+-In the 1970s, the development of the TCP/IP protocol made it possible to connect different types of computer networks, which laid the foundation for the internet as we know it today.
+-The first public demonstration of the internet was in 1974, and the first internet service provider was established in the 1980s.
+-Since then, the internet has grown rapidly, and its use has been transformed by the development of the World Wide Web in the 1990s.
+-The internet is a network of computers that allows for communication and information sharing
+-The first internet was created in the 1960s
+-The internet has transformed communication, commerce, and other areas of human activity
+-The internet is made up of a variety of technologies, including the World Wide Web, email, and file sharing
+-The internet has raised a number of issues, including privacy, security, and censorship

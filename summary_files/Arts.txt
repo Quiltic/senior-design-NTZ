@@ -1,9 +1,15 @@
--The U.S. Constitution was ratified in 1788 and provides the foundation for the American government
--The Constitution establishes the three branches of government (legislative, executive, and judicial) and outlines their powers
--The Constitution also establishes the principles of federalism, which divide power between the national government and the states
--The Bill of Rights, which consists of the first 10 amendments to the Constitution, guarantees individual rights and liberties
--The five main food groups are fruits, vegetables, grains, protein, and dairy
--Fruits and vegetables are packed with vitamins, minerals, and fiber
--Grains provide complex carbohydrates, essential for energy
--Protein is necessary for cell repair and growth
--Dairy is a good source of calcium, needed for strong bones and teeth
+-The scientific method is a systematic process for investigating phenomena, acquiring new knowledge, or correcting and integrating previous knowledge.
+-The scientific method is characterized by its use of empiricism, experimentation, and hypotheses.
+-The scientific method typically begins with observations or measurements of a phenomenon.
+-These observations or measurements are then used to form a hypothesis, which is a testable statement about the phenomenon.
+-The hypothesis is then subjected to experimentation or other forms of testing.
+-Based on the results of the testing, the hypothesis is either supported or rejected.
+-If the hypothesis is supported, it may be further refined or expanded.
+-If the hypothesis is rejected, a new hypothesis may be formulated and tested.
+-The scientific method is an iterative process, and the results of one experiment can be used to inform subsequent experiments.
+-The glass ceiling is a metaphor used to describe the invisible barrier that limits women's advancement in the workplace.
+-The term was first coined in the 1970s by feminist activists to describe the barriers women face in the workforce.
+-The glass ceiling is a barrier to women's advancement in the workplace that is often invisible and hard to identify.
+-Women have made great strides in the workplace in recent decades, but the glass ceiling remains a significant obstacle to their success.
+-There is no single reason why the glass ceiling exists, but it is often caused by gender discrimination and bias in the workplace.
+-Breaking the glass ceiling requires women to be assertive and confident in their abilities, and to demand equality in the workplace.
