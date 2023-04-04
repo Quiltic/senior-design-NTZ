@@ -39,7 +39,7 @@ def run_pants_multiple_times_for_data():
                     file_name += '.txt'
                     file_name = transcription_path + file_name
                     # print(end_str_final)
-                    # print('---------------------' + file_name + '---------------------')
+                    print('---------------------' + file_name + '---------------------')
                     please_run_me_over_with_a_rusty_bus(file_name, end_str_final)
 
                 else:
@@ -52,21 +52,15 @@ def run_pants_multiple_times_for_data():
 def get_summary_training_data(transcription_path, summary_output_path):
 
     for filename in os.listdir(transcription_path):
-        f = os.path.join(transcription_path, filename)
-        if os.path.isfile(f):
-            try:
+
+        try:
+            f = os.path.join(transcription_path, filename)
+            if os.path.isfile(f):
                 in_file = f
-                paragraph = in_file.split('\\')[-1]
-                out_file = summary_output_path + paragraph
-                print(out_file)
-                f = open(out_file, 'w', encoding='utf-8')
-                f.write("hello world")
-                f.close()
-                print("DONE")
-                break
-               # summarization_poc.generate_summary_training_data(in_file, out_file)
-            except:
-                pass
+                out_file = summary_output_path + f.split('\\')[-1]
+                summarization_poc.generate_summary_training_data(in_file, out_file)
+        except:
+            pass
 
 get_summary_training_data(transcription_path ,summary_training_output_path)
 
@@ -123,9 +117,6 @@ get_summary_training_data(transcription_path ,summary_training_output_path)
 # btn_run_all = Button(master, text ="Run All", command=lambda: run_all.run_all(transcribed_text, notes_text, master, opened_file))
 # btn_run_all.place(x=350, y=100)
 
-# btn_loop = Button(master, text ="Loop", command=lambda: get_summary_training_data(transcription_path ,summary_training_output_path, 1, 1, master))
-# btn_loop.place(x=350, y=150)
-
 # btn_save = Button(master, text ="Clear", command = lambda: clear_text_widgets(transcribed_text, notes_text, master))
 # btn_save.place(x=500, y=100)
 
@@ -134,8 +125,6 @@ get_summary_training_data(transcription_path ,summary_training_output_path)
 
 # btn_browse = Button(master, text = "Browse Files", command = browse_files)
 # btn_browse.place(x=750, y=100)
-
-
 
 # # Create a File Explorer label
 # label_file_explorer = Label(master, text = None)

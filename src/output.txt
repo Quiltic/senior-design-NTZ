@@ -1,1 +1,4 @@
-- Chemistry is the study of matter, including its composition, properties, and structure. - It also covers how changes and how it interacts with energy. - The sky's color is related to the chemical make-up of substances and the type of light they reflect. - Insects can walk across the surface of water because of the water's unique properties, like high surface tension. - There are five main branches of chemistry: inorganic chemistry, organic chemistry, analytical chemistry, physical chemistry, and biochemistry.
+-Chemistry is the study of matter, including its composition, properties, and structure.
+-Changes in matter and how it interacts with energy is also studied in chemistry.
+-The sky's color is an example of a question that can be answered with chemistry.
+-There are five main branches of chemistry: inorganic chemistry, organic chemistry, analytical chemistry, physical chemistry, and biochemistry.
