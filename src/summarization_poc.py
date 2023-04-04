@@ -40,6 +40,7 @@ def gpt3_completion(prompt, engine='text-davinci-002', temp=0.7, top_p=1.0, toke
                 outfile.write('PROMPT:\n\n' + prompt + '\n\n==========\n\nRESPONSE:\n\n' + text)
             return text
         except Exception as oops:
+            break
             retry += 1
             if retry >= max_retry:
                 return "GPT3 error: %s" % oops
@@ -111,3 +112,29 @@ def load_text_to_notes(btn, master):
     btn.insert(END, text)
     btn.configure(state=DISABLED)
     master.update()
+
+
+def generate_summary_training_data(infile, outfile):
+
+    print(infile)
+    print(outfile)
+    print("----------------------------------------------------------------------------------")
+    alltext = open_file(infile)
+
+    chunks = str(textwrap.wrap(alltext, 4000))
+    result = list()
+
+    for chunk in chunks:
+
+        prompt = open_file('prompt.txt').replace("<<BULLET NOTES>>", chunk)
+        summary = gpt3_completion(prompt)
+        summary = clean_summary(summary)
+
+
+
+        #print(summary)
+
+
+        result.append(summary)
+    
+    save_file('\n'.join(result), outfile)
