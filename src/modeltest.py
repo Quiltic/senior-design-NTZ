@@ -514,7 +514,8 @@ def main(learning_rate=5e-4, batch_size=20, epochs=10,
 
     #Model struggles with generalization, swapped ot SGD
     optimizer = optim.SGD(model.parameters(), hparams['learning_rate'], weight_decay=0.0001)
-    criterion = nn.CTCLoss(blank=28).to(device)
+    #Consider changing to CTCLoss to better generalize
+    criterion = nn.NAdam(blank=28).to(device)
     scheduler = optim.lr_scheduler.OneCycleLR(optimizer, max_lr=hparams['learning_rate'], 
                                             steps_per_epoch=int(len(train_loader)),
                                             epochs=hparams['epochs'],
@@ -525,7 +526,7 @@ def main(learning_rate=5e-4, batch_size=20, epochs=10,
         train(model, device, train_loader, criterion, optimizer, scheduler, epoch, iter_meter, experiment)
         test(model, device, test_loader, criterion, epoch, iter_meter, experiment)
 		
-comet_api_key = "l1GPzhHUWtI9P0IBlKvLHSRFI" # add your api key here
+comet_api_key = "DUMMY KEY" # add your api key here
 project_name = "speechrecognition"
 experiment_name = "speechrecognition-linux"
 
