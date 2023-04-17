@@ -17,8 +17,8 @@
    - [Justin Nordeman](Professional%20Biographys/nordeman_professional_biography.md) 
    - [Joshua Zack](Professional%20Biographys/Professional%20Biography%20Josh%20Zack.md)
    - [Jackson Trexler](Professional%20Biographys/TrexlerProfessionalBiography.md)
-11. Budget
-      - To date, there has been no expenses
+11. Summary of Expenses
+      - The only expense spent on this project was $20 to access the GPT-3 summarization API once our free trial expired
 12. [Appendix](appendix.md)
 13. [User Documentation](https://github.com/Quiltic/senior-design-NTZ/tree/main/user_docs)
 14. [Expo Poster](https://docs.google.com/presentation/d/1ks0KUGZNSYpheQRF7wUp65X88whSnbDXYVudWKNsGo0/edit#slide=id.p)
