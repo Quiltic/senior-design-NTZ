@@ -6,7 +6,7 @@
 
 [https://drive.google.com/drive/folders/1KdHv7rrRpkxinDHKFkTwqCgmYUzbFd0I?usp=sharing](https://drive.google.com/drive/folders/1KdHv7rrRpkxinDHKFkTwqCgmYUzbFd0I?usp=sharing)
 
-Boiler Plate for Speach to Text: [https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/](https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/)
+Boiler Plate for Speech to Text: [https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/](https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/)
 
 
 Chat GPT refrence : [https://www.youtube.com/watch?v=fflkFtIwQXo](https://www.youtube.com/watch?v=fflkFtIwQXo)
