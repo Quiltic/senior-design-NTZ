@@ -23,3 +23,6 @@
 13. [User Documentation](https://github.com/Quiltic/senior-design-NTZ/tree/main/user_docs)
 14. [Expo Poster](https://docs.google.com/presentation/d/1ks0KUGZNSYpheQRF7wUp65X88whSnbDXYVudWKNsGo0/edit#slide=id.p)
 15. [Final Self-Assessment Essays](final_individual_assesments/)
+   - [Justin Nordeman](https://github.com/Quiltic/senior-design-NTZ/blob/main/final_individual_assesments/nordeman_final_evaluation.docx) 
+   - [Joshua Zack]()
+   - [Jackson Trexler]()
