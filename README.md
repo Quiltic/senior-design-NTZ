@@ -21,3 +21,4 @@
       - To date, there has been no expenses
 12. [Appendix](appendix.md)
 13. [User Documentation](https://github.com/Quiltic/senior-design-NTZ/tree/main/user_docs)
+14. [Expo Poster](https://docs.google.com/presentation/d/1ks0KUGZNSYpheQRF7wUp65X88whSnbDXYVudWKNsGo0/edit#slide=id.p)
