@@ -20,4 +20,4 @@
 11. Budget
       - To date, there has been no expenses
 12. [Appendix](appendix.md)
-13. [User Documentation] (https://github.com/Quiltic/senior-design-NTZ/tree/main/user_docs)
+13. [User Documentation](https://github.com/Quiltic/senior-design-NTZ/tree/main/user_docs)
