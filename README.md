@@ -26,4 +26,4 @@
    - [Justin Nordeman](https://github.com/Quiltic/senior-design-NTZ/blob/main/final_individual_assesments/nordeman_final_evaluation.docx) 
    - [Joshua Zack]()
    - [Jackson Trexler]()
-16. [Final Summary of Hours](appendix.md)
+16. [Final Summary of Hours](final_summary_of_hours.md)
