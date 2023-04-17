@@ -9,7 +9,7 @@
 6. [Timeline](Timeline.md)
 7. [ABET Concerns Essay](Assignment%20%237%20Essay.docx)
 8. [PPT Slideshow](https://docs.google.com/presentation/d/1R2QSCEwBvEWZMPPAPQ5i0VN1hOjhfNsqYkyLQ2wZCxY/edit#slide=id.g2085d2ee081_1_30)
-9. [Self-Assessment Essays](individual_capstone_assesment/)
+9. [Initial Self-Assessment Essays](individual_capstone_assesment/)
    - [Justin Nordeman](individual_capstone_assesment/SeniorDesign_Assignment3_Essay.docx)
    - [Joshua Zack](individual_capstone_assesment/Joshua%20Zack%20Individual%20capstone%20assessment.docx)
    - [Jackson Trexler](individual_capstone_assesment/JacksonTrexlerIndividualCapstoneAssessment.docx)
@@ -22,3 +22,4 @@
 12. [Appendix](appendix.md)
 13. [User Documentation](https://github.com/Quiltic/senior-design-NTZ/tree/main/user_docs)
 14. [Expo Poster](https://docs.google.com/presentation/d/1ks0KUGZNSYpheQRF7wUp65X88whSnbDXYVudWKNsGo0/edit#slide=id.p)
+15. [Final Self-Assessment Essays](final_individual_assesments/)
