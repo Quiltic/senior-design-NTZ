@@ -19,6 +19,7 @@
    - [Jackson Trexler](Professional%20Biographys/TrexlerProfessionalBiography.md)
 11. Summary of Expenses
       - $20 to access the GPT-3 summarization API once our free trial expired
+
       - ~$5 worth of electricity over both semesters
 12. [Appendix](appendix.md)
 13. [User Documentation](https://github.com/Quiltic/senior-design-NTZ/tree/main/user_docs)
