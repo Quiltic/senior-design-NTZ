@@ -19,59 +19,50 @@ def avg_wer(wer_scores, combined_ref_len):
 
 def _levenshtein_distance(reference, hypothesis):
     #Measures similarity between strings. Minimum number of edits to transform.
-    m = len(reference)
-    n = len(hypothesis)
+    #https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/
+    #https://towardsdatascience.com/text-similarity-w-levenshtein-distance-in-python-2f7478986e75
+    
+    reference_length = len(reference)
+    hypothesis_length = len(hypothesis)
 
     # special case
-    if reference == hyp:
+    if reference == hypothesis:
         return 0
-    if m == 0:
-        return n
-    if n == 0:
-        return m
+    if reference_length == 0:
+        return hypothesis_length
+    if hypothesis_length == 0:
+        return reference_length
 
-    if m < n:
+    if reference_length < hypothesis_length:
         reference, hypothesis = hypothesis, reference
-        m, n = n, m
+        reference_length, hypothesis_length = hypothesis_length, reference_length
+	
+    distance = np.zeros((2, hypothesis_length + 1), dtype=np.int32)
 
-    # use O(min(m, n)) space
-    distance = np.zeros((2, n + 1), dtype=np.int32)
-
-    # initialize distance matrix
-    for j in range(0,n + 1):
+    # init matrix
+    for j in range(0,hypothesis_length + 1):
         distance[0][j] = j
 
     # calculate levenshtein distance
-    for i in range(1, m + 1):
+    for i in range(1, reference_length + 1):
         prev_row_idx = (i - 1) % 2
         cur_row_idx = i % 2
         distance[cur_row_idx][0] = i
-        for j in range(1, n + 1):
+        for j in range(1, hypothesis_length + 1):
             if ref[i - 1] == hyp[j - 1]:
                 distance[cur_row_idx][j] = distance[prev_row_idx][j - 1]
             else:
-                s_num = distance[prev_row_idx][j - 1] + 1
-                i_num = distance[cur_row_idx][j - 1] + 1
-                d_num = distance[prev_row_idx][j] + 1
-                distance[cur_row_idx][j] = min(s_num, i_num, d_num)
+                previous_under = distance[prev_row_idx][j - 1] + 1
+                current_under = distance[cur_row_idx][j - 1] + 1
+                previous = distance[prev_row_idx][j] + 1
+                distance[cur_row_idx][j] = min(previous_under, current_under, previous)
 
-    return distance[m % 2][n]
+    return distance[reference_length % 2][hypothesis_length]
 
 
 def word_errors(reference, hypothesis, ignore_case=False, delimiter=' '):
-    """Compute the levenshtein distance between reference sequence and
-    hypothesis sequence in word-level.
-    :param reference: The reference sentence.
-    :type reference: basestring
-    :param hypothesis: The hypothesis sentence.
-    :type hypothesis: basestring
-    :param ignore_case: Whether case-sensitive or not.
-    :type ignore_case: bool
-    :param delimiter: Delimiter of input sentences.
-    :type delimiter: char
-    :return: Levenshtein distance and word number of reference sentence.
-    :rtype: list
-    """
+    #Calculate werror using levenshtein distance
+    #https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/
     if ignore_case == True:
         reference = reference.lower()
         hypothesis = hypothesis.lower()
