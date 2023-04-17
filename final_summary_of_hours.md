@@ -42,6 +42,10 @@
 ## **Justification**
 
 Justin - Worked with the UI design, documentation, and GPT model. Helped out in other areas.
+
+
 Jackson - Worked primarily on both model training/creation. 
+
+
 Josh - Worked primarily on model creation, assisted in model trainings, documentation, a lot of time researching models. 
 
