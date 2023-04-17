@@ -292,6 +292,7 @@ def train(model, device, source_file, target_file, input_size, hidden_size, outp
     target_tensor = torch.tensor([ord(c) for c in target_text]).unsqueeze(1).float()
     
     optimizer = optim.Adam(model.parameters(), learning_rate=learning_rate)
+    #We should consider replacing with torch.optim.SGD to assist with generalization? May converge slower
     #place torch lstm in training mode
     model.train()
     for epoch in range(num_epochs):
@@ -299,6 +300,7 @@ def train(model, device, source_file, target_file, input_size, hidden_size, outp
         target = target_tensor[epoch].unsqueeze(1)
 """
     
+#Training function, takes model (LSTM), device, train_loader (Probably libre 500 dataset), 
 def train(model, device, train_loader, criterion, optimizer, scheduler, epoch):
     model.train()
     data_len = len(train_loader.dataset)
@@ -378,13 +380,19 @@ def main():
     print('Num Model Parameters', sum([param.nelement() for param in model.parameters()]))
 
     optimizer = optim.AdamW(model.parameters(), hparams['learning_rate'])
+    
+    #Connectionist Temporal Classification loss
+    #CTC Loss is specifically beneficial for neural networks training to recognize speech
     criterion = nn.CTCLoss(blank=28).to(device)
+    
+    #Adjusts learning rate according to epochs
     scheduler = optim.lr_scheduler.OneCycleLR(optimizer, max_lr=hparams['learning_rate'], 
                                             steps_per_epoch=int(len(train_loader)),
                                             epochs=hparams['epochs'],
                                             anneal_strategy='linear')
-
+    #Used for Comet statistics
     #iter_meter = IterMeter()
+    #Iterate through epochs.
     for epoch in range(1, hparams['epochs'] + 1):
         train(model, device, train_loader, criterion, optimizer, scheduler, epoch)
         #test(model, device, test_loader, criterion, epoch, "")
