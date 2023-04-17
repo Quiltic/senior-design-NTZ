@@ -1,6 +1,6 @@
 # P.A.N.T.S.
 
-## CS5001 Final  Report
+## CS5002 Final  Report
 1. [Team names](Project-description.md) and [Abstract](abstract.md)
 2. [Project Description](Project-description.md)
 3. [User Stories](User_Stories.md) and [Design Diagrams](Design_Diagrams/Design_Diagrams.md)
