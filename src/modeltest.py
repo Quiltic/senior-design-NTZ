@@ -75,19 +75,8 @@ def word_errors(reference, hypothesis, ignore_case=False, delimiter=' '):
 
 
 def char_errors(reference, hypothesis, ignore_case=False, remove_space=False):
-    """Compute the levenshtein distance between reference sequence and
-    hypothesis sequence in char-level.
-    :param reference: The reference sentence.
-    :type reference: basestring
-    :param hypothesis: The hypothesis sentence.
-    :type hypothesis: basestring
-    :param ignore_case: Whether case-sensitive or not.
-    :type ignore_case: bool
-    :param remove_space: Whether remove internal space characters
-    :type remove_space: bool
-    :return: Levenshtein distance and length of reference sentence.
-    :rtype: list
-    """
+    #Character errors, also using levenshtein
+    #https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/
     if ignore_case == True:
         reference = reference.lower()
         hypothesis = hypothesis.lower()
@@ -104,30 +93,8 @@ def char_errors(reference, hypothesis, ignore_case=False, remove_space=False):
 
 
 def wer(reference, hypothesis, ignore_case=False, delimiter=' '):
-    """Calculate word error rate (WER). WER compares reference text and
-    hypothesis text in word-level. WER is defined as:
-    .. math::
-        WER = (Sw + Dw + Iw) / Nw
-    where
-    .. code-block:: text
-        Sw is the number of words subsituted,
-        Dw is the number of words deleted,
-        Iw is the number of words inserted,
-        Nw is the number of words in the reference
-    We can use levenshtein distance to calculate WER. Please draw an attention
-    that empty items will be removed when splitting sentences by delimiter.
-    :param reference: The reference sentence.
-    :type reference: basestring
-    :param hypothesis: The hypothesis sentence.
-    :type hypothesis: basestring
-    :param ignore_case: Whether case-sensitive or not.
-    :type ignore_case: bool
-    :param delimiter: Delimiter of input sentences.
-    :type delimiter: char
-    :return: Word error rate.
-    :rtype: float
-    :raises ValueError: If word number of reference is zero.
-    """
+    #https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/
+    #word error rate based on edit distance
     edit_distance, ref_len = word_errors(reference, hypothesis, ignore_case,
                                          delimiter)
 
@@ -139,32 +106,10 @@ def wer(reference, hypothesis, ignore_case=False, delimiter=' '):
 
 
 def cer(reference, hypothesis, ignore_case=False, remove_space=False):
-    """Calculate charactor error rate (CER). CER compares reference text and
-    hypothesis text in char-level. CER is defined as:
-    .. math::
-        CER = (Sc + Dc + Ic) / Nc
-    where
-    .. code-block:: text
-        Sc is the number of characters substituted,
-        Dc is the number of characters deleted,
-        Ic is the number of characters inserted
-        Nc is the number of characters in the reference
-    We can use levenshtein distance to calculate CER. Chinese input should be
-    encoded to unicode. Please draw an attention that the leading and tailing
-    space characters will be truncated and multiple consecutive space
-    characters in a sentence will be replaced by one space character.
-    :param reference: The reference sentence.
-    :type reference: basestring
-    :param hypothesis: The hypothesis sentence.
-    :type hypothesis: basestring
-    :param ignore_case: Whether case-sensitive or not.
-    :type ignore_case: bool
-    :param remove_space: Whether remove internal space characters
-    :type remove_space: bool
-    :return: Character error rate.
-    :rtype: float
-    :raises ValueError: If the reference length is zero.
-    """
+   #Edits / Characeters
+   #Edits being sum of deletions, insertions, replacements
+   #https://towardsdatascience.com/evaluating-ocr-output-quality-with-character-error-rate-cer-and-word-error-rate-wer-853175297510
+   #https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/
     edit_distance, ref_len = char_errors(reference, hypothesis, ignore_case,
                                          remove_space)
 
@@ -419,7 +364,7 @@ def train(model, device, train_loader, criterion, optimizer, scheduler, epoch, i
                     100. * batch_idx / len(train_loader), loss.item()))
     torch.save(model.state_dict(), f'./data/Senior_model_{1}.pt')
 
-
+#Test model by running against test data included with dataset, generating werror...
 def test(model, device, test_loader, criterion, epoch, iter_meter, experiment):
     print('\nevaluating...')
     model.eval()
@@ -471,10 +416,13 @@ def main(learning_rate=5e-4, batch_size=20, epochs=10,
         "epochs": epochs
     }
 
+    #Track parameters used in experiment, needed to reuse older models.
     experiment.log_parameters(hparams)
 
+    #Accelerate with cuda, will take a very long time otherwise
+    #Check print result of torch.cuda.is_available() before running.
     use_cuda = torch.cuda.is_available()
-    torch.manual_seed(7)
+    torch.manual_seed(42)
     device = torch.device("cuda" if use_cuda else "cpu")
 
     if not os.path.isdir("./data"):
@@ -504,6 +452,8 @@ def main(learning_rate=5e-4, batch_size=20, epochs=10,
     print('Num Model Parameters', sum([param.nelement() for param in model.parameters()]))
 
     #Model struggles with generalization, swapped ot SGD
+    #https://pytorch.org/docs/stable/generated/torch.optim.SGD.html
+    #Stochastic Gradient Descent
     optimizer = optim.SGD(model.parameters(), hparams['learning_rate'], weight_decay=0.0001)
     #Consider changing to CTCLoss to better generalize
     criterion = nn.NAdam(blank=28).to(device)
@@ -517,7 +467,7 @@ def main(learning_rate=5e-4, batch_size=20, epochs=10,
         train(model, device, train_loader, criterion, optimizer, scheduler, epoch, iter_meter, experiment)
         test(model, device, test_loader, criterion, epoch, iter_meter, experiment)
 		
-comet_api_key = "DUMMY KEY" # add your api key here
+comet_api_key = False # Replace with API key after pulling
 project_name = "speechrecognition"
 experiment_name = "speechrecognition-linux"
 
@@ -533,5 +483,7 @@ batch_size = 8
 epochs = 1
 libri_train_set = "train-other-500"
 libri_test_set = "test-other"
+#Training on 500 to help generalize
+#Epochs should be more than 1 in practice
 
 main(learning_rate, batch_size, epochs, libri_train_set, libri_test_set, experiment)
