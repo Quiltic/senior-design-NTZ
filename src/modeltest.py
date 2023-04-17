@@ -8,23 +8,22 @@ import torch.nn.functional as F
 import torchaudio
 import numpy as np
 
+#This program uses the PyTorch library for training and testing model
+#Torchaudio used to process audio data / transform to spectogram tensors
+
+#Comet generates additional testing data, tracks loss over time etc.
+
 def avg_wer(wer_scores, combined_ref_len):
     return float(sum(wer_scores)) / float(combined_ref_len)
 
 
-def _levenshtein_distance(ref, hyp):
-    """Levenshtein distance is a string metric for measuring the difference
-    between two sequences. Informally, the levenshtein disctance is defined as
-    the minimum number of single-character edits (substitutions, insertions or
-    deletions) required to change one word into the other. We can naturally
-    extend the edits to word level when calculate levenshtein disctance for
-    two sentences.
-    """
-    m = len(ref)
-    n = len(hyp)
+def _levenshtein_distance(reference, hypothesis):
+    #Measures similarity between strings. Minimum number of edits to transform.
+    m = len(reference)
+    n = len(hypothesis)
 
     # special case
-    if ref == hyp:
+    if reference == hyp:
         return 0
     if m == 0:
         return n
@@ -32,7 +31,7 @@ def _levenshtein_distance(ref, hyp):
         return m
 
     if m < n:
-        ref, hyp = hyp, ref
+        reference, hypothesis = hypothesis, reference
         m, n = n, m
 
     # use O(min(m, n)) space
@@ -513,7 +512,8 @@ def main(learning_rate=5e-4, batch_size=20, epochs=10,
     #print(model)
     print('Num Model Parameters', sum([param.nelement() for param in model.parameters()]))
 
-    optimizer = optim.AdamW(model.parameters(), hparams['learning_rate'], weight_decay=0.0001)
+    #Model struggles with generalization, swapped ot SGD
+    optimizer = optim.SGD(model.parameters(), hparams['learning_rate'], weight_decay=0.0001)
     criterion = nn.CTCLoss(blank=28).to(device)
     scheduler = optim.lr_scheduler.OneCycleLR(optimizer, max_lr=hparams['learning_rate'], 
                                             steps_per_epoch=int(len(train_loader)),
