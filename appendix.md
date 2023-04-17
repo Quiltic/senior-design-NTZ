@@ -4,6 +4,10 @@
 
 [https://github.com/Quiltic/senior-design-NTZ](https://github.com/Quiltic/senior-design-NTZ)
 
+[https://drive.google.com/drive/folders/1KdHv7rrRpkxinDHKFkTwqCgmYUzbFd0I?usp=sharing](https://drive.google.com/drive/folders/1KdHv7rrRpkxinDHKFkTwqCgmYUzbFd0I?usp=sharing)
+
+Boiler Plate for Speach to Text: [https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/](https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/)
+
 
 ****
 
@@ -11,9 +15,9 @@
 
 | Work          | Justin Hours | Josh Hours | Jackson Hours  |
 | ------------- | ------------ | ---------- |--------------- |
-| Planning      | 12           | 12         |14              |
-| Documentation | 20           | 18         |10              |
-| Research      | 11           | 9          |13              |
-| Discussion    | 6            | 6          | 6              |
-| Prototyping   | 5            | 7          | 7              |
-| Total         | 52           | 52         |50              |
+| Planning      | 25           | 25         | 27             |
+| Documentation | 40           | 33         | 20             |
+| Research      | 14           | 27         | 28             |
+| Discussion    | 12           | 12         | 12             |
+| Prototyping   | 20           | 17         | 27             |
+| Total         | 111          | 114        | 114            |
