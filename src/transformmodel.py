@@ -5,6 +5,10 @@ import os
 import numpy as np
 from torch.utils.data.sampler import SubsetRandomSampler
 
+#This file uses many elements from this tutorial as boilerplate with different methods for data import, and a different model: LSTM, among other changes
+#https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch/
+#Thank you Micheael Nguyen
+
 PATH = "C:/Users/jtrex/Documents/SrDesignProj"
 
 ########################
