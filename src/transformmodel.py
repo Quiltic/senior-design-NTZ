@@ -251,22 +251,29 @@ class NotesDataset(torch.utils.data.Dataset):
 ###    LSTM MODEL    ###
 ########################
 
-
+#pytorch LSTM: https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html
+#background: https://machinelearningmastery.com/text-generation-with-lstm-in-pytorch/
 class LSTMModel(nn.Module):
     def __init__(self, input_size, hidden_size, output_size, dropout=0.2):
         super(LSTMModel, self).__init__()
         self.hidden_size = hidden_size
+        #LSTM layer with dropout
         self.lstm = nn.LSTM(input_size, hidden_size, dropout=dropout)
+        #dropout layer to assist with generalization / prevent overfitting. This is important as we are working with limited datasets
         self.dropout = nn.Dropout(dropout)
+        #linear layer
         self.linear = nn.Linear(hidden_size, output_size)
+        #Softmax activation
         self.softmax = nn.LogSoftmax(dim=1)   
     def forward(self, input):
+        #Forward pass through LSTM, dropout layer, linear layer...
         output = self.lstm(input)
         output = self.dropout(output)
         output = self.linear(output.view(-1, self.hidden_size))
         output = self.softmax(output)
         return output
     def init_hidden(self, batch_size):
+        #Initialize hidden layer to 0s
         return (torch.zeros(1, batch_size, self.hidden_size),
                 torch.zeros(1, batch_size, self.hidden_size))
 
@@ -278,10 +285,10 @@ class LSTMModel(nn.Module):
 
 #train1
 """
-
-    #we have source and target files, input, hidde, and output size, 
+    
+    #we have source and target files, input, hidden, and output size, 
 def train(model, device, source_file, target_file, input_size, hidden_size, output_size, learning_rate, num_epochs, dropout):
-    #load text
+    #load text from file
     with open(source_file, 'r') as f:
         source_text = f.read()
     with open(target_file, 'r') as f:
@@ -342,15 +349,18 @@ def main():
     test_url="test-clean"
 
     use_cuda = torch.cuda.is_available()
-    torch.manual_seed(7)
+    torch.manual_seed(42)
     #device = torch.device("cuda" if use_cuda else "cpu")
 
 
     CUDA_DEVICE_NUM = 0
     # DEVICE = torch.device('cpu')
 
+    #check cuda, we could get away with running this on CPU, but we shouldn't.
     device = torch.device(f'cuda:{CUDA_DEVICE_NUM}' if torch.cuda.is_available() else 'cpu')
     print('Device:', device)
+    
+    
     if not os.path.isdir(f"{PATH}/data"):
         os.makedirs(f"{PATH}/data")
 
@@ -359,7 +369,8 @@ def main():
     kwargs = {'num_workers': 1, 'pin_memory': True} if use_cuda else {}
     
     
-    
+    #Notes should be organized so that titles correlate to plaintext.
+    #AmericanHistory wikipedia plaintext should correlate to AmericanHistory summary in corresonding target folder.
     dataset = NotesDataset(f"{PATH}/data")
     dataset.__len__()
     # Creating PT data samplers and loaders:
@@ -376,16 +387,22 @@ def main():
         hparams['dropout']
         ).to(device)
 
+    #https://discuss.pytorch.org/t/how-to-count-model-parameters/128505 thanks to user mariosasko
+    
     # print(model)
-    print('Num Model Parameters', sum([param.nelement() for param in model.parameters()]))
+    print('Number of parameters', sum([param.nelement() for param in model.parameters()]))
 
+    #Change to SGD?
+    #use adamW optimization, good base choice
     optimizer = optim.AdamW(model.parameters(), hparams['learning_rate'])
     
     #Connectionist Temporal Classification loss
     #CTC Loss is specifically beneficial for neural networks training to recognize speech
-    criterion = nn.CTCLoss(blank=28).to(device)
+    #In this case we use MSELoss, to find error between predicted and actual values, works well with summarization / text transformations
+    criterion = nn.MSELoss(blank=42).to(device)
     
     #Adjusts learning rate according to epochs
+    #Trusting boilerplate on this
     scheduler = optim.lr_scheduler.OneCycleLR(optimizer, max_lr=hparams['learning_rate'], 
                                             steps_per_epoch=int(len(train_loader)),
                                             epochs=hparams['epochs'],
