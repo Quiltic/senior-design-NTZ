@@ -22,10 +22,11 @@
 
       - ~$5 worth of electricity over both semesters
 12. [Appendix](appendix.md)
-13. [User Documentation](https://github.com/Quiltic/senior-design-NTZ/tree/main/user_docs)
-14. [Expo Poster](https://docs.google.com/presentation/d/1ks0KUGZNSYpheQRF7wUp65X88whSnbDXYVudWKNsGo0/edit#slide=id.p)
-15. [Final Self-Assessment Essays](final_individual_assesments/)
+13. [Test Plan](https://docs.google.com/document/d/18TDRMwQrFM5K34YrAM09Cox6KfVqLJ9xOi8F2a4MEb4/edit#heading=h.em3ndzacym1f)
+14. [User Documentation](https://github.com/Quiltic/senior-design-NTZ/tree/main/user_docs)
+15. [Expo Poster](https://docs.google.com/presentation/d/1ks0KUGZNSYpheQRF7wUp65X88whSnbDXYVudWKNsGo0/edit#slide=id.p)
+16. [Final Self-Assessment Essays](final_individual_assesments/)
    - [Justin Nordeman](https://github.com/Quiltic/senior-design-NTZ/blob/main/final_individual_assesments/nordeman_final_evaluation.docx) 
-   - [Joshua Zack]()
-   - [Jackson Trexler]()
-16. [Final Summary of Hours](final_summary_of_hours.md)
+   - [Joshua Zack](https://github.com/Quiltic/senior-design-NTZ/blob/main/final_individual_assesments/Self-Assessment-Josh-Zack.pdf)
+   - [Jackson Trexler](https://github.com/Quiltic/senior-design-NTZ/blob/main/final_individual_assesments/TrexlerFinalReflection.pdf)
+17. [Final Summary of Hours](final_summary_of_hours.md)
